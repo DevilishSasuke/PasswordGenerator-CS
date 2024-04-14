@@ -35,7 +35,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.ControlDark;
+            ClientSize = new Size(384, 561);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "App";
             Text = "Password Generator";
