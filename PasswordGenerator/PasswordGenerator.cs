@@ -21,6 +21,7 @@ namespace PasswordGenerator
             => GeneratePassword(len, ComposeAlphabet(hasDigits, hasSpecials));
         public static string GeneratePassword(int len, string alphabet)
         {
+            len = Math.Clamp(len, 15, 100);
             string password = "";
 
             while (!IsStrong(password, alphabet))
@@ -32,12 +33,13 @@ namespace PasswordGenerator
         // Create a candidate for password
         public static string Next() => Next(ComposeAlphabet());
         public static string Next(int len) => Next(len, ComposeAlphabet());
-        public static string Next(string alphabet) => Next(new Random().Next(15, 30), alphabet);
+        public static string Next(string alphabet) => Next(GetLen(), alphabet);
         public static string Next(int len, string alphabet)
         {
+            len = Math.Clamp(len, 15, 100);
             Random rand = new Random(Guid.NewGuid().GetHashCode());
             string candidate = "";
-            
+
             for (int i = 0; i < len; i++)
                 candidate += alphabet[rand.Next(alphabet.Length)];
 
@@ -100,6 +102,9 @@ namespace PasswordGenerator
 
             return counter;
         }
+
+        // Generate length value
+        private static int GetLen() => new Random(Guid.NewGuid().GetHashCode()).Next(15, 30);
 
         // Return amount of elements in password
         private static int NumOfChars(string password, string elements) => elements.Count(password.Contains);
