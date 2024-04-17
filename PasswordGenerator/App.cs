@@ -1,14 +1,12 @@
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace PasswordGenerator
 {
     public partial class App : Form
     {
-        private System.Windows.Forms.TextBox PasswordField;
-        private System.Windows.Forms.Button HasDigits;
-        private System.Windows.Forms.Button HasSpecials;
+        private TextBox PasswordField;
+        private Button HasDigits;
+        private Button HasSpecials;
         private NumericUpDown LengthField;
 
         private Color ThisGray = Color.FromArgb(240, 240, 240);
@@ -35,6 +33,7 @@ namespace PasswordGenerator
             AutoSize = false;
             FormBorderStyle = FormBorderStyle.Sizable;
             MaximumSize = new Size(800, 800);
+            Icon = new Icon("..\\..\\..\\..\\pg-logo.ico");
         }
 
         private void CreateAppElements()
@@ -96,7 +95,7 @@ namespace PasswordGenerator
             return label;
         }
 
-        private System.Windows.Forms.TextBox GetPasswordField() => new System.Windows.Forms.TextBox()
+        private TextBox GetPasswordField() => new ()
         {
             Dock = DockStyle.Fill,
             Multiline = true,
@@ -110,11 +109,11 @@ namespace PasswordGenerator
             TabStop = false,
         };
 
-        private System.Windows.Forms.Button CopyButton()
+        private Button CopyButton()
         {
-            Bitmap img = new("C:\\Users\\DevilishSasuke\\source\\repos\\PasswordGenerator\\copy.png");
+            Bitmap img = new("..\\..\\..\\..\\copy.png");
             img = new Bitmap(img, 50, 50);
-            var button = new System.Windows.Forms.Button()
+            var button = new Button()
             {
                 Dock = DockStyle.Fill,
                 BackColor = ThisBlue,
@@ -128,9 +127,9 @@ namespace PasswordGenerator
             return button;
         }
 
-        private System.Windows.Forms.Button GenerateButton()
+        private Button GenerateButton()
         {
-            var button = new System.Windows.Forms.Button()
+            var button = new Button()
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.FromArgb(80, 200, 120),
@@ -171,9 +170,9 @@ namespace PasswordGenerator
             TabStop = false,
         };
 
-        private System.Windows.Forms.Button CheckBoxButton(string text)
+        private Button CheckBoxButton(string text)
         {
-            var button = new System.Windows.Forms.Button()
+            var button = new Button()
             {
                 Dock = DockStyle.Fill,
                 BackColor = ThisRed,
@@ -208,7 +207,7 @@ namespace PasswordGenerator
 
         private void CBButton_OnClick(object s, EventArgs e)
         {
-            var button = s as System.Windows.Forms.Button;
+            var button = s as Button;
             if (button.BackColor == ThisGreen)
             {
                 button.BackColor = ThisRed;
@@ -250,6 +249,6 @@ namespace PasswordGenerator
             return table;
         }
 
-        private bool ColorToBool(System.Windows.Forms.Button button) => button.BackColor == ThisGreen;
+        private bool ColorToBool(Button button) => button.BackColor == ThisGreen;
     }
 }

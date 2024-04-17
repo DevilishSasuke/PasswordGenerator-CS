@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             SuspendLayout();
             // 
             // App
@@ -37,7 +36,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDark;
             ClientSize = new Size(384, 561);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "App";
             Text = "Password Generator";
             Load += App_Load;
